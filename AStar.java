@@ -31,9 +31,17 @@ public class AStar {
 	 */
 	public boolean parcours(Etat e0) {
 		this.enAttente.add(e0);
+		int iterations = 0;
 		Etat e = null;
 		while (!this.enAttente.isEmpty()) {
+			//clean out the waiting list to avoid doubles
+			for (Etat i : this.vus) {
+				if (this.enAttente.contains(i)) {
+					this.enAttente.remove(i);
+				}
+			}
 			e = this.enAttente.get(0);
+			// gets cheapest road
 			for (Etat i : this.enAttente) {
 				if (i.h() < e.h()) {
 					e = i;
@@ -42,6 +50,7 @@ public class AStar {
 			this.enAttente.remove(e);
 			if (e.estSolution()) {
 				System.out.println(this.toString() + "\n Success!");
+				System.out.println("Iterations to solution:" + iterations);
 				return true;
 			} else {
 				for (Etat i : e.successeurs()) {
@@ -62,9 +71,11 @@ public class AStar {
 				}
 				// JC: on ajoute l'etat courant e a la liste des etats vus
 				this.vus.add(e);
+				iterations++;
 			}
 		}
 		System.out.println(this.toString() + "\n Solution not found");
+		System.out.println("Iterations:" + iterations);
 		return false;
 	}
 
@@ -75,12 +86,14 @@ public class AStar {
 	public String toString() {
 		String s = "A star\nVus:";
 		for (int i = 0; i < this.vus.size(); i++) {
-			s += this.vus.get(i).toString()+"\n";
+			s += this.vus.get(i).toString() + "\n";
 		}
-		/*
-		 * s += "\nEn Attente:"; for (int i = 0; i < this.enAttente.size(); i++)
-		 * { s += this.enAttente.get(i).toString(); }
-		 */
+
+		s += "\nEn Attente:";
+		for (int i = 0; i < this.enAttente.size(); i++) {
+			s += this.enAttente.get(i).toString()+"\n";
+		}
+
 		return s;
 	}
 
@@ -91,5 +104,5 @@ public class AStar {
 	public ArrayList<Etat> getEnAttente() {
 		return enAttente;
 	}
-	
+
 }
