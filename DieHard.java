@@ -3,6 +3,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Class containing the required elements to re-enact the bucket problem from
+ * the Die Hard film franchise. These elements can be used in a graph, which can
+ * itself be combed by a search algorithm
  * 
  * @author Jessica Chambers
  * @version 1

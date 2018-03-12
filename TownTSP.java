@@ -97,4 +97,10 @@ public class TownTSP implements Voisin {
         }
         tg.display(path, 100);
     }
+    
+	@Override
+	public String toString() {
+		String s = "\nValeur : " + this.val;
+		return s;
+	}
 }

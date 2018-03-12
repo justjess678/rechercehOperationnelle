@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /**
+ * Class containing an implementation of the AStar algorithm
  * 
  * @author Jessica Chambers
  * @version 1
@@ -34,7 +35,7 @@ public class AStar {
 		int iterations = 0;
 		Etat e = null;
 		while (!this.enAttente.isEmpty()) {
-			//clean out the waiting list to avoid doubles
+			// clean out the waiting list to avoid doubles
 			for (Etat i : this.vus) {
 				if (this.enAttente.contains(i)) {
 					this.enAttente.remove(i);
@@ -91,7 +92,7 @@ public class AStar {
 
 		s += "\nEn Attente:";
 		for (int i = 0; i < this.enAttente.size(); i++) {
-			s += this.enAttente.get(i).toString()+"\n";
+			s += this.enAttente.get(i).toString() + "\n";
 		}
 
 		return s;

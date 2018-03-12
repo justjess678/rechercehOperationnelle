@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * Main class, used to test and use the various graph search algorithms in
+ * different conditions
  * 
  * @author Jessica Chambers
  * @version 1
@@ -70,12 +72,12 @@ public class MainTest {
 		case 5:
 			if (pos != null && time != null) {
 				Tabou tab = new Tabou(new TownGraph(pos, time, true));
-				Voisin v1=new TownTSP(new TownGraph(pos, time, true));
+				Voisin v1 = new TownTSP(new TownGraph(pos, time, true));
 				List<Voisin> tabou = tab.algo(v1);
 				TownGraph.generate(10);
-				for(Voisin v : tabou){
+				for (Voisin v : tabou) {
 					System.out.println(v.toString());
-					//v.displayPath();
+					// v.displayPath();
 				}
 			}
 

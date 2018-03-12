@@ -4,9 +4,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.List;
 
 /**
+ * Class containing an implementation of the Tabu algorithm
  * 
  * @author Jessica Chambers
  * @version 1
+ * 
  * 
  */
 public class Tabou implements Voisin {
@@ -52,7 +54,8 @@ public class Tabou implements Voisin {
 
 	/**
 	 * Method that runs the tabu algorithm on the current neighbour
-	 * @return 
+	 * 
+	 * @return
 	 * 
 	 * @return new taboo neighbour or null if none
 	 */

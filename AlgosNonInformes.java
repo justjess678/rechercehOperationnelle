@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
 /**
+ * Class containing an implementation of both the breadth-first search algorithm
+ * and the depth-first search algorithm
  * 
  * @author Jessica Chambers
  * @version 1
- * 
  */
 public class AlgosNonInformes {
 
@@ -32,10 +33,12 @@ public class AlgosNonInformes {
 	 */
 	public boolean parcours(String type, Etat einit) {
 		Etat e = einit;
+		int iterations = 0;
 		this.enAttente.add(einit);
 		while (!this.enAttente.isEmpty()) {
 			if (e.estSolution()) {
 				System.out.println(this.toString() + "\n Success!");
+				System.out.println("Iterations to solution:" + iterations);
 				return true;
 			} else {
 				// on ajoute les successeurs de l'état courant
@@ -50,17 +53,19 @@ public class AlgosNonInformes {
 							this.enAttente.add(i);
 						}
 					}
+					iterations++;
 					break;
 				case "P":// parcours en profondeur
 					// ajoute au début de la liste ^
 					// enleve le dernier element de la liste
-					e = this.enAttente.get(this.enAttente.size());
-					this.enAttente.remove(this.enAttente.size());
+					e = this.enAttente.get(this.enAttente.size() - 1);
+					this.enAttente.remove(this.enAttente.size() - 1);
 					for (Etat i : e.successeurs()) {
 						if (!this.vus.contains(i)) {
 							this.enAttente.add(0, i);
 						}
 					}
+					iterations++;
 					break;
 				default:
 					System.out.println("Veuillez mettre L ou P en entrée");
@@ -70,6 +75,7 @@ public class AlgosNonInformes {
 			}
 		}
 		System.out.println(this.toString() + "\n Solution not found");
+		System.out.println("Iterations:" + iterations);
 		return false;
 
 	}

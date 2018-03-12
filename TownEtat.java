@@ -45,10 +45,14 @@ public class TownEtat implements Etat {
 
 	}
 
+	/**
+	 * Returns the heuristic of the current town (the distance travelled)
+	 */
 	public double h() {
-		//Help
-		//return this.tg.dist(x1, y1, x2, y2);
-		return 0;
+		int[] coord1 = tg.getCoord(this.town);
+		int[] coord2 = tg.getCoord(this.towndest);
+		return Math.sqrt((coord2[0] - coord1[0]) * (coord2[0] - coord1[0])
+				+ (coord2[1] - coord1[1]) * (coord2[1] - coord1[1]));
 	}
 
 	public double k(Etat e) {
